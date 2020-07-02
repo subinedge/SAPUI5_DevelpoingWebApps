@@ -1,0 +1,13 @@
+{
+	"recipient" : {
+		"name" : "Subin"
+	},
+	"details": {
+		"firstName":"Subin",
+		"lastName":"Sudhakaran",
+		"contact":"7358219584",
+		"address": "vaishnavi nagar, thirumullaivoyal, chennai-600062",
+		"zipCode":"600062",
+		"city":"Chennai"
+	}
+}

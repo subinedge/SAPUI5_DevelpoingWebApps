@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>projectName</title>
+		<script id="sap-ui-bootstrap"
+			src="resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-resourceroots='{"projectNamespace.projectName": "./"}'
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+			data-sap-ui-async="true"
+			data-sap-ui-frameOptions="trusted">
+		</script>
+		
+		<script>
+		// initialize component js file in index.html and the root view declaration will be done in mainfest.json 
+		// which will be passed to component js file
+			sap.ui.getCore().attachInit(function() {
+				
+				// workaround begin: start a mock server
+			// jQuery.sap.require("sap.ui.core.util.MockServer");
+			// var oMockServer = new sap.ui.core.util.MockServer({
+			// 	rootUri: "/destinations/ES5/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/"
+			// });
+			// oMockServer.simulate("metadata.xml", {
+			// 	sMockdataBaseUrl: "mockdata",
+			// 	bGenerateMissingMockData: true
+			// });
+			// oMockServer.start();
+			// workaround end
+
+				
+				
+				new sap.ui.core.ComponentContainer({
+					name: "projectNamespace.projectName"
+				}).placeAt("content");	
+			});
+		</script>
+	</head>
+	<body class="sapUiBody" id="content">
+		
+	</body>
+</html>

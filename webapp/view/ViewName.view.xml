@@ -1,0 +1,99 @@
+<mvc:View controllerName="projectNamespace.projectName.controller.ViewName" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form" displayBlock="false" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="SAPUI5 app development">
+				<content>
+					<IconTabBar id="idTopLevelIconTabBar" class="sapUiResponsiveContentPadding" selectedKey="db">
+						<items>
+							<!--1st tab-->
+							<IconTabFilter id="start" text="Getting Started">
+								<Carousel>
+									<pages>
+										<Image src="https://i.pinimg.com/originals/ca/76/0b/ca760b70976b52578da88e06973af542.jpg" tooltip="tooltip" height="400px"/>
+										<Image src="https://killerattitudestatus.in/wp-content/uploads/2019/12/gud-night-images.jpg" tooltip="tooltip" height="400px"/>
+									</pages>
+								</Carousel>
+								<!--2nd tab-->
+							</IconTabFilter>
+							<IconTabFilter id="finish" text="Containers">
+								<MessageStrip class="sapUiMediumMargin" type="Error" showIcon="true" text="{i18n>text}"></MessageStrip>
+								<core:Icon src="sap-icon://accelerated" size="8rem"/>
+								<Toolbar>
+									<ToolbarSpacer></ToolbarSpacer>
+									<Button text="Accept Button" type="Accept" icon="sap-icon://accept"></Button>
+									<Button text="Reject button" type="Reject" icon="sap-icon://decline"></Button>
+								</Toolbar>
+							</IconTabFilter>
+							<!--3rd tab-->
+							<IconTabFilter id="form" text="Layout Form">
+								<f:SimpleForm id="simpleFormChange" title="Employee Details" editable="true" class="editableForm">
+									<f:content>
+										<Label text="First Name"/>
+										<Input value="{Address>/firstName}"></Input>
+										<Label text="Last Name"/>
+										<Input value="{Address>/lastName}"></Input>
+										<Label text="Contact No"/>
+										<Input value="{Address>/contact}"></Input>
+										<Label text="Address"/>
+										<Input value="{Address>/address}"></Input>
+										<Label text="ZipCode"/>
+										<Input value="{Address>/zipCode}"></Input>
+										<Label text="City"/>
+										<Input value="{Address>/city}"></Input>
+										<Select>
+											<items>
+												<core:Item text="India"/>
+												<core:Item text="United States"/>
+												<core:Item text="Germany"/>
+											</items>
+										</Select>
+									</f:content>
+								</f:SimpleForm>
+							</IconTabFilter>
+							
+							
+							<!--4th tab-->
+							<IconTabFilter text="Data Binding" key="db">
+								<content>
+									<List headerText="Products" width="auto" items="{/ProductSet}">
+										<items>
+											<ObjectListItem 
+											title="{Name}" 
+											number="{
+												parts:[
+													{path:'Price'}, 
+													{path:'CurrencyCode'}
+													], 
+													type: 'sap.ui.model.type.Currency',
+													formatOptions: {
+														showMeasure: false
+													}
+													}" 
+											numberState="{= ${Price} > 1000 ? 'Error' : 'Success'}" 
+											intro="{ProductID}" 
+											numberUnit="{CurrencyCode}">
+											<firstStatus>
+												<ObjectStatus text="{
+													parts: [
+														{path: 'WeightUnit'},
+														{path: 'WeightMeasure'}
+													],
+													formatter: '.formatter.delivery'
+												}"></ObjectStatus>
+											</firstStatus>
+											</ObjectListItem>
+										</items>
+									</List>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+	<Button text="Press Me!" press="onShowMessage"/>
+	<Button id="rejectButton" enabled="true" text="Delete" type="Reject" icon="sap-icon://delete" press="onDelete"/>
+	<Input value="{TestModel>/recipient/name}" description="Hello {TestModel>/recipient/name}" valueLiveUpdate="true" width="30%"/>
+</mvc:View>

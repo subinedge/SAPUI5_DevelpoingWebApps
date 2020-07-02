@@ -1,0 +1,113 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "projectNamespace.projectName",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"ES5": {
+				"uri": "/destinations/ES5/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "projectNamespace.projectName.view.ViewName",
+			"type": "XML",
+			"async": true,
+			"id": "ViewName"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "projectNamespace.projectName.i18n.i18n"
+				}
+			},
+			"TestModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/TestModel.json"
+			},
+			"Address": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Address.json"
+			},
+			"": {
+				"dataSource": "ES5"
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "projectNamespace.projectName.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [{
+				"name": "RouteViewName",
+				"pattern": "RouteViewName",
+				"target": ["TargetViewName"]
+			}],
+			"targets": {
+				"TargetViewName": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "ViewName",
+					"viewName": "ViewName"
+				}
+			}
+		}
+	}
+}
