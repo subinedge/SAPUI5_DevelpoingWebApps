@@ -73,6 +73,9 @@
 										sorter: {
 											path: 'Category',
 											group: true
+										},
+										parameters: {
+											expand: 'ToSupplier'
 										}
 									}"
 									growing="true"
@@ -94,6 +97,10 @@
 												<firstStatus>
 													<ObjectStatus text="{ parts: [ {path: 'WeightUnit'}, {path: 'WeightMeasure'} ], formatter: '.formatter.delivery' }"></ObjectStatus>
 												</firstStatus>
+												
+												<secondStatus>
+													<ObjectStatus text="Delivered from : {ToSupplier/Address/City}"></ObjectStatus>
+												</secondStatus>
 											</ObjectListItem>
 										</items>
 									</List>
