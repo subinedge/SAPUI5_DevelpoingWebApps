@@ -1,5 +1,5 @@
 <mvc:View controllerName="projectNamespace.projectName.controller.ViewName" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:f="sap.ui.layout.form" displayBlock="false" xmlns="sap.m">
+	xmlns:f="sap.ui.layout.form" xmlns:sub="sap.ui.comp.smartfilterbar" displayBlock="false" xmlns="sap.m">
 	<App>
 		<pages>
 			<Page title="SAPUI5 app development">
@@ -28,17 +28,9 @@
 									<ToolbarSpacer></ToolbarSpacer>
 									<Button text="Press Me!" press="onShowMessage"/>
 									<Button id="rejectButton" enabled="true" text="Delete" type="Reject" icon="sap-icon://delete" press="onDelete"/>
-									<Input value="{
-									path: 'TestModel>/recipient/name',
-									type: 'sap.ui.model.type.Float',
-									formatOptions: {
-										minFractionDigits: 2
-									},
-									constraints: {
-										maximum: 3000	
-									}}" 
-									description="Hello {TestModel>/recipient/name}"
-									width="30%"/>
+									<Input
+										value="{ path: 'TestModel>/recipient/name', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2 }, constraints: { maximum: 3000 }}"
+										description="Hello {TestModel>/recipient/name}" width="30%"/>
 								</Toolbar>
 							</IconTabFilter>
 							<!--3rd tab-->
@@ -70,11 +62,30 @@
 							<!--4th tab-->
 							<IconTabFilter text="Data Binding" key="db">
 								<content>
-									<List headerText="Products" width="50%" items="{/ProductSet}">
+									<!--<sub:SmartFilterBar id="smartFilterBar" considerSelectionVariants="true" entitySet="ProductSet" enableBasicSearch="true"-->
+									<!--	basicSearchFieldName="Lifnr" showClearButton="true">-->
+									<!--	<sub:layoutData>-->
+									<!--		<FlexItemData shrinkFactor="0"/>-->
+									<!--	</sub:layoutData>-->
+									<!--</sub:SmartFilterBar>-->
+									<List id="invoiceList" items="{
+										path: '/ProductSet',
+										sorter: {
+											path: 'Category',
+											group: true
+										}
+									}">
+										<headerToolbar>
+											<Toolbar>
+												<Title text="Products"></Title>
+												<ToolbarSpacer></ToolbarSpacer>
+												<SearchField width="50%" search="onFilterProducts"></SearchField>
+											</Toolbar>
+										</headerToolbar>
 										<items>
 											<ObjectListItem title="{Name}"
 												number="{ parts:[ {path:'Price'}, {path:'CurrencyCode'} ], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
-												numberState="{= ${Price} > 1000 ? 'Error' : 'Success'}" intro="{SupplierName}" numberUnit="{CurrencyCode}">
+												numberState="{= ${Price} > 1000 ? 'Error' : 'Success'}" intro="{SupplierID}" numberUnit="{CurrencyCode}">
 												<firstStatus>
 													<ObjectStatus text="{ parts: [ {path: 'WeightUnit'}, {path: 'WeightMeasure'} ], formatter: '.formatter.delivery' }"></ObjectStatus>
 												</firstStatus>
