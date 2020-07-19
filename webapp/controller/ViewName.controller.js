@@ -32,6 +32,16 @@ function (Controller, MessageToast, formatter, Filter, FilterOperator) {
 			var oList = this.getView().byId("invoiceList");
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilter);
+		},
+		
+		onItemSelected: function(oEvent) {
+			var oSelectedItem = oEvent.getParameter('listItem');
+			var oContext = oSelectedItem.getBindingContext();
+			var oPath = oContext.getPath();
+			
+			var oPanel = this.getView().byId('productHeaderDetails');
+			oPanel.bindElement({path: oPath});
+			oPanel.setVisible(true);
 		}
 	});
 });

@@ -1,5 +1,5 @@
 <mvc:View controllerName="projectNamespace.projectName.controller.ViewName" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:f="sap.ui.layout.form" xmlns:sub="sap.ui.comp.smartfilterbar" displayBlock="false" xmlns="sap.m">
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:sub="sap.ui.comp.smartfilterbar" displayBlock="false" xmlns="sap.m">
 	<App>
 		<pages>
 			<Page title="SAPUI5 app development">
@@ -74,7 +74,12 @@
 											path: 'Category',
 											group: true
 										}
-									}">
+									}"
+									growing="true"
+									growingThreshold="5"
+									growingScrollToLoad="false"
+									mode="SingleSelectMaster"
+									selectionChange="onItemSelected">
 										<headerToolbar>
 											<Toolbar>
 												<Title text="Products"></Title>
@@ -92,6 +97,17 @@
 											</ObjectListItem>
 										</items>
 									</List>
+									
+									<!--for displaying info on product click-->
+									
+									<Panel class="sapUiResponsiveMargin" width="auto" id="productHeaderDetails" visible="false">
+										<l:Grid>
+											<Text text="Product ID: {ProductID}"/>
+											<Text text="Product Name: {Name}"/>
+											<Text text="Description: {Description}"/>
+											<Text text="Price: {Price}"/>
+										</l:Grid>
+									</Panel>
 								</content>
 							</IconTabFilter>
 						</items>
