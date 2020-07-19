@@ -2,8 +2,8 @@ sap.ui.define([],function() {
 	return {
 		delivery: function(iWeight, sMeasure) {
 			var sResult= "";
-			if(sMeasure === "6") {
-				iWeight /=1000;
+			if(sMeasure === "G") {
+				iWeight = iWeight / 1000;
 			}
 			
 			if(iWeight < 0.5) {

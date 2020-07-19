@@ -41,6 +41,7 @@
 		}
 	},
 	"sap.ui5": {
+		"handleValidation": true,
 		"flexEnabled": false,
 		"rootView": {
 			"viewName": "projectNamespace.projectName.view.ViewName",
