@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Simple Dialog">
+		<f:SimpleForm title="Form Title">
+			<f:content>
+				<Label design="Bold" text="First Name"></Label>
+				<Input id="inpFragFirst" placeholder="Enter your first name.."></Input>
+				<Label design="Bold" text="Last Name"></Label>
+				<Input id="inpFragLast" placeholder="Enter your last name.."></Input>
+			</f:content>
+		</f:SimpleForm>
+		<beginButton>
+			<Button text="Update" type="Emphasized" press="handleUpdate"></Button>
+		</beginButton>
+		<endButton>
+			<Button text="Close" type="Reject" press="handleClose"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Carousel>
+		<pages>
+			<Image src="https://i.pinimg.com/originals/ca/76/0b/ca760b70976b52578da88e06973af542.jpg" tooltip="tooltip" height="400px"/>
+			<Image src="https://killerattitudestatus.in/wp-content/uploads/2019/12/gud-night-images.jpg" tooltip="tooltip" height="400px"/>
+		</pages>
+	</Carousel>
+</core:FragmentDefinition>

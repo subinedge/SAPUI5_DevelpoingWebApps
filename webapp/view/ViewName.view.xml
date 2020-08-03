@@ -1,120 +1,23 @@
 <mvc:View controllerName="projectNamespace.projectName.controller.ViewName" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:sub="sap.ui.comp.smartfilterbar" displayBlock="false" xmlns="sap.m">
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" displayBlock="false" xmlns="sap.m">
 	<App>
 		<pages>
 			<Page title="SAPUI5 app development">
 				<content>
 					<IconTabBar id="idTopLevelIconTabBar" class="sapUiResponsiveContentPadding" selectedKey="db">
 						<items>
-							<!--1st tab-->
 							<IconTabFilter id="start" text="Getting Started">
-								<Carousel>
-									<pages>
-										<Image src="https://i.pinimg.com/originals/ca/76/0b/ca760b70976b52578da88e06973af542.jpg" tooltip="tooltip" height="400px"/>
-										<Image src="https://killerattitudestatus.in/wp-content/uploads/2019/12/gud-night-images.jpg" tooltip="tooltip" height="400px"/>
-									</pages>
-								</Carousel>
-								<!--2nd tab-->
+								<core:Fragment fragmentName="projectNamespace.projectName.fragments.iconTabBar1" type="XML"/>
 							</IconTabFilter>
-							<IconTabFilter id="finish" text="Containers">
-								<MessageStrip class="sapUiMediumMargin" type="Error" showIcon="true" text="{i18n>text}"></MessageStrip>
-								<core:Icon src="sap-icon://accelerated" size="8rem"/>
-								<Toolbar>
-									<ToolbarSpacer></ToolbarSpacer>
-									<Button text="Accept Button" type="Accept" icon="sap-icon://accept"></Button>
-									<Button text="Reject button" type="Reject" icon="sap-icon://decline"></Button>
-								</Toolbar>
-								<Toolbar>
-									<ToolbarSpacer></ToolbarSpacer>
-									<Button text="Press Me!" press="onShowMessage"/>
-									<Button id="rejectButton" enabled="true" text="Delete" type="Reject" icon="sap-icon://delete" press="onDelete"/>
-									<Input
-										value="{ path: 'TestModel>/recipient/name', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2 }, constraints: { maximum: 3000 }}"
-										description="Hello {TestModel>/recipient/name}" width="30%"/>
-								</Toolbar>
+							<IconTabFilter id="finish" text="Containers" key="db">
+								<core:Fragment fragmentName="projectNamespace.projectName.fragments.iconTabBar2" type="XML"/>
 							</IconTabFilter>
-							<!--3rd tab-->
 							<IconTabFilter id="form" text="Layout Form">
-								<f:SimpleForm id="simpleFormChange" title="Employee Details" editable="true" class="editableForm">
-									<f:content>
-										<Label text="First Name"/>
-										<Input value="{Address>/firstName}"></Input>
-										<Label text="Last Name"/>
-										<Input value="{Address>/lastName}"></Input>
-										<Label text="Contact No"/>
-										<Input value="{Address>/contact}"></Input>
-										<Label text="Address"/>
-										<Input value="{Address>/address}"></Input>
-										<Label text="ZipCode"/>
-										<Input value="{Address>/zipCode}"></Input>
-										<Label text="City"/>
-										<Input value="{Address>/city}"></Input>
-										<Select>
-											<items>
-												<core:Item text="India"/>
-												<core:Item text="United States"/>
-												<core:Item text="Germany"/>
-											</items>
-										</Select>
-									</f:content>
-								</f:SimpleForm>
+								<core:Fragment fragmentName="projectNamespace.projectName.fragments.iconTabBar3" type="XML"/>
 							</IconTabFilter>
-							<!--4th tab-->
-							<IconTabFilter text="Data Binding" key="db">
+							<IconTabFilter text="Data Binding">
 								<content>
-									<!--<sub:SmartFilterBar id="smartFilterBar" considerSelectionVariants="true" entitySet="ProductSet" enableBasicSearch="true"-->
-									<!--	basicSearchFieldName="Lifnr" showClearButton="true">-->
-									<!--	<sub:layoutData>-->
-									<!--		<FlexItemData shrinkFactor="0"/>-->
-									<!--	</sub:layoutData>-->
-									<!--</sub:SmartFilterBar>-->
-									<List id="invoiceList" items="{
-										path: '/ProductSet',
-										sorter: {
-											path: 'Category',
-											group: true
-										},
-										parameters: {
-											expand: 'ToSupplier'
-										}
-									}"
-									growing="true"
-									growingThreshold="5"
-									growingScrollToLoad="false"
-									mode="SingleSelectMaster"
-									selectionChange="onItemSelected">
-										<headerToolbar>
-											<Toolbar>
-												<Title text="Products"></Title>
-												<ToolbarSpacer></ToolbarSpacer>
-												<SearchField width="50%" search="onFilterProducts"></SearchField>
-											</Toolbar>
-										</headerToolbar>
-										<items>
-											<ObjectListItem title="{Name}"
-												number="{ parts:[ {path:'Price'}, {path:'CurrencyCode'} ], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
-												numberState="{= ${Price} > 1000 ? 'Error' : 'Success'}" intro="{SupplierID}" numberUnit="{CurrencyCode}">
-												<firstStatus>
-													<ObjectStatus text="{ parts: [ {path: 'WeightUnit'}, {path: 'WeightMeasure'} ], formatter: '.formatter.delivery' }"></ObjectStatus>
-												</firstStatus>
-												
-												<secondStatus>
-													<ObjectStatus text="Delivered from : {ToSupplier/Address/City}"></ObjectStatus>
-												</secondStatus>
-											</ObjectListItem>
-										</items>
-									</List>
-									
-									<!--for displaying info on product click-->
-									
-									<Panel class="sapUiResponsiveMargin" width="auto" id="productHeaderDetails" visible="false">
-										<l:Grid>
-											<Text text="Product ID: {ProductID}"/>
-											<Text text="Product Name: {Name}"/>
-											<Text text="Description: {Description}"/>
-											<Text text="Price: {Price}"/>
-										</l:Grid>
-									</Panel>
+									<core:Fragment fragmentName="projectNamespace.projectName.fragments.iconTabBar4" type="XML"/>
 								</content>
 							</IconTabFilter>
 						</items>

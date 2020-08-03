@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+	<MessageStrip class="sapUiMediumMargin" type="Error" showIcon="true" text="{i18n>text}"></MessageStrip>
+	<core:Icon src="sap-icon://accelerated" size="8rem"/>
+	<f:SimpleForm id="formfragment" title="Fragment Details passing" editable="true">
+		<f:content>
+			<Label text="First Name"/>
+			<Input id="inp1" value="{Address>/firstName}"></Input>
+			<Label text="Last Name"/>
+			<Input id="inp2" value="{Address>/lastName}"></Input>
+		</f:content>
+	</f:SimpleForm>
+	<Toolbar>
+		<ToolbarSpacer></ToolbarSpacer>
+		<Button text="Accept Button" press="showDialog" type="Accept" icon="sap-icon://accept"></Button>
+		<Button text="Reject button" type="Reject" icon="sap-icon://decline"></Button>
+	</Toolbar>
+	<Toolbar>
+		<ToolbarSpacer></ToolbarSpacer>
+		<Button text="Press Me!" press="onShowMessage"/>
+		<Button id="rejectButton" enabled="true" text="Delete" type="Reject" icon="sap-icon://delete" press="onDelete"/>
+		<Input
+			value="{ path: 'TestModel>/recipient/name', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2 }, constraints: { maximum: 3000 }}"
+			description="Hello {TestModel>/recipient/name}" width="30%"/>
+	</Toolbar>
+</core:FragmentDefinition>

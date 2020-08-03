@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+	<f:SimpleForm id="simpleFormChange" title="Employee Details" editable="true" class="editableForm">
+		<f:content>
+			<Label text="First Name"/>
+			<Input value="{Address>/firstName}"></Input>
+			<Label text="Last Name"/>
+			<Input value="{Address>/lastName}"></Input>
+			<Label text="Contact No"/>
+			<Input value="{Address>/contact}"></Input>
+			<Label text="Address"/>
+			<Input value="{Address>/address}"></Input>
+			<Label text="ZipCode"/>
+			<Input value="{Address>/zipCode}"></Input>
+			<Label text="City"/>
+			<Input value="{Address>/city}"></Input>
+			<Select>
+				<items>
+					<core:Item text="India"/>
+					<core:Item text="United States"/>
+					<core:Item text="Germany"/>
+				</items>
+			</Select>
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

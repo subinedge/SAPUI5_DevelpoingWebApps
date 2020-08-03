@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout">
+	<List id="invoiceList" items="{ path: '/ProductSet', sorter: { path: 'Category', group: true }, parameters: { expand: 'ToSupplier' } }"
+		growing="true" growingThreshold="5" growingScrollToLoad="false" mode="SingleSelectMaster" selectionChange="onItemSelected">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="Products"></Title>
+				<ToolbarSpacer></ToolbarSpacer>
+				<SearchField width="50%" search="onFilterProducts"></SearchField>
+			</Toolbar>
+		</headerToolbar>
+		<items>
+			<ObjectListItem title="{Name}"
+				number="{ parts:[ {path:'Price'}, {path:'CurrencyCode'} ], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
+				numberState="{= ${Price} > 1000 ? 'Error' : 'Success'}" intro="{SupplierID}" numberUnit="{CurrencyCode}">
+				<firstStatus>
+					<ObjectStatus text="{ parts: [ {path: 'WeightUnit'}, {path: 'WeightMeasure'} ], formatter: '.formatter.delivery' }"></ObjectStatus>
+				</firstStatus>
+				<secondStatus>
+					<ObjectStatus text="Delivered from : {ToSupplier/Address/City}"></ObjectStatus>
+				</secondStatus>
+			</ObjectListItem>
+		</items>
+	</List>
+	<!--for displaying info on product click-->
+	<Panel class="sapUiResponsiveMargin" width="auto" id="productHeaderDetails" visible="false">
+		<l:Grid>
+			<Text text="Product ID: {ProductID}"/>
+			<Text text="Product Name: {Name}"/>
+			<Text text="Description: {Description}"/>
+			<Text text="Price: {Price}"/>
+		</l:Grid>
+	</Panel>
+</core:FragmentDefinition>
